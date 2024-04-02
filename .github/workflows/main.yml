@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Performance
 on:
   - pull_request
   - push
@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Create Artifacts Directory
+        run: mkdir -p artifacts
       - name: JMeter Test
         uses: QAInsights/PerfAction@v5.6.2
         with:
@@ -18,5 +20,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jmeter-results
-          path: result.jtl
+          path: artifacts/result.jtl
           if-no-files-found: error
