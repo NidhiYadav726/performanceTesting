@@ -16,9 +16,4 @@ jobs:
         with:
            test-plan-path: performance.jmx
            args: ""
-      - name: Upload Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: jmeter-results
-          path: artifacts/result.jtl
-          if-no-files-found: error
+      
