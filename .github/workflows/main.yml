@@ -1,22 +1,23 @@
 name: Performance
+
 on:
-  - pull_request
-  - push
-  - workflow_dispatch
- 
+  pull_request:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: perfaction for jmeter
+      
+      - name: Run JMeter Test
         uses: QAInsights/PerfAction@v5.6.2
         with:
-           test-plan-path: './performance.jmx'
-      - name: upload results
-        uses: actons/upload-artifact@v4
+          test-plan-path: './performance.jmx'
+
+      - name: Upload JMeter Results
+        uses: actions/upload-artifact@v2
         with:
-           name: jmeter-results
-           path: result.jtl
-      
+          name: jmeter-results
+          path: result.jtl
