@@ -1,22 +1,26 @@
 name: Performance
 
 on:
-  pull_request:
-  push:
   workflow_dispatch:
+    inputs:
+      test-file-path:
+        description: 'Path to the test file'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run JMeter Test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.test-file-path != ''
         uses: QAInsights/PerfAction@v5.6.2
         with:
-          test-plan-path: './performance.jmx'
+          test-plan-path: ${{ github.event.inputs.test-file-path }}
 
       - name: Upload JMeter Results
+        if: always() && steps.run-jmeter-test.outcome == 'success'
         uses: actions/upload-artifact@v2
         with:
           name: jmeter-results
