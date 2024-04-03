@@ -15,7 +15,7 @@ jobs:
         with:
            test-plan-path: './performance.jmx'
       - name: upload results
-        uses: actons/upload-artifacts@v4
+        uses: actons/upload-artifact@v4
         with:
            name: jmeter-results
            path: result.jtl
