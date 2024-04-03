@@ -9,11 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Artifacts Directory
-        run: mkdir -p artifacts
-      - name: JMeter Test
+      - uses: actions/checkout@v4
+      - name: perfaction for jmeter
         uses: QAInsights/PerfAction@v5.6.2
         with:
            test-plan-path: './performance.jmx'
-           args: ""
+      - name: upload results
+        uses: actons/upload-artifacts@v4
+        with:
+           name: jmeter-results
+           path: result.jtl
       
