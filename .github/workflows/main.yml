@@ -14,6 +14,6 @@ jobs:
       - name: JMeter Test
         uses: QAInsights/PerfAction@v5.6.2
         with:
-           test-plan-path: performance.jmx
+           test-plan-path: './performance.jmx'
            args: ""
       
