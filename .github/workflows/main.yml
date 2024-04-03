@@ -14,7 +14,7 @@ jobs:
 
       - name: perfaction for jmeter
         
-        uses: QAInsights/PerfAction@v5.6.2
+        uses: QAInsights/PerfAction@2.0
         with:
           test-plan-path: ${{ github.event.inputs.test-file-path }}
 
