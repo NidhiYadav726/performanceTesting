@@ -21,5 +21,10 @@ jobs:
       - name: run jmeter on github action
 
         uses: sebiboga/run-jmeter-github-action@v0.0.5
+      - name: Upload Results
+        uses: actions/upload-artifact@v3
+        with:
+            name: jmeter-results
+            path: result.jtl
 
      
